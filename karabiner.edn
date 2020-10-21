@@ -1,0 +1,37 @@
+{:simlayers {:f-mode {:key :f}}
+
+ :main [{:des "f-mode"
+         :rules [[:j :down_arrow :f-mode] ;; f-j down arrow
+                 [:k :up_arrow :f-mode] ;; f-k up arrow
+                 [:l :right_arrow :f-mode] ;; f-l right arrow
+                 [:h :left_arrow :f-mode] ;; f-h left arrow
+
+                 [:s :!!s :f-mode] ;; app switcher prev
+                 [:d :!!d :f-mode] ;; app switcher next
+                 [:e :!Cgrave_accent_and_tilde :f-mode] ;; app switcher next window
+
+                 [:w :!Ow :f-mode] ;; magnet next screen
+                 [:q :!Oq :f-mode] ;; magnet prev screen
+                 [:z :!Oz :f-mode] ;; magnet left half
+                 [:x :!Ox :f-mode] ;; magnet right two thirds
+                 [:c :!Oc :f-mode] ;; magnet right half
+
+                 ]}
+
+        {:des "symbols-mode"
+         :rules [[:semicolon ["symbols-mode" 1] nil {:afterup ["symbols-mode" 0]
+                                                     :alone :semicolon}]
+                 [:e :!S9 :symbols-mode] ;; comma-e left paren
+                 [:r :!S0 :symbols-mode] ;; comma-r right paren
+                 [:d :!Sopen_bracket :symbols-mode] ;; comma-r left curly bracket
+                 [:f :!Sclose_bracket :symbols-mode] ;; comma-r right curly bracket
+                 [:c :open_bracket :symbols-mode] ;; comma-c left square bracket
+                 [:v :close_bracket :symbols-mode] ;; comma-c right square bracket
+                ]}
+
+        {:des "perma-shift numbers"
+         :rules [[:1 :!S1] [:2 :!S2] [:3 :!S3] [:4 :!S4] [:5 :!S5] [:6 :!S6] [:7 :!S7] [:8 :!S8] [:9 :!S9] [:0 :!S0]
+        ]}
+
+       ]
+}
