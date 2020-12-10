@@ -1,37 +1,62 @@
-{:simlayers {:f-mode {:key :f}}
-
- :main [{:des "f-mode"
-         :rules [[:j :down_arrow :f-mode] ;; f-j down arrow
-                 [:k :up_arrow :f-mode] ;; f-k up arrow
-                 [:l :right_arrow :f-mode] ;; f-l right arrow
-                 [:h :left_arrow :f-mode] ;; f-h left arrow
-
-                 [:s :!!s :f-mode] ;; app switcher prev
-                 [:d :!!d :f-mode] ;; app switcher next
-                 [:e :!Cgrave_accent_and_tilde :f-mode] ;; app switcher next window
-
-                 [:w :!Ow :f-mode] ;; magnet next screen
-                 [:q :!Oq :f-mode] ;; magnet prev screen
-                 [:z :!Oz :f-mode] ;; magnet left half
-                 [:x :!Ox :f-mode] ;; magnet right two thirds
-                 [:c :!Oc :f-mode] ;; magnet right half
-
-                 ]}
-
-        {:des "symbols-mode"
-         :rules [[:semicolon ["symbols-mode" 1] nil {:afterup ["symbols-mode" 0]
-                                                     :alone :semicolon}]
-                 [:e :!S9 :symbols-mode] ;; comma-e left paren
-                 [:r :!S0 :symbols-mode] ;; comma-r right paren
-                 [:d :!Sopen_bracket :symbols-mode] ;; comma-r left curly bracket
-                 [:f :!Sclose_bracket :symbols-mode] ;; comma-r right curly bracket
-                 [:c :open_bracket :symbols-mode] ;; comma-c left square bracket
-                 [:v :close_bracket :symbols-mode] ;; comma-c right square bracket
-                ]}
-
-        {:des "perma-shift numbers"
-         :rules [[:1 :!S1] [:2 :!S2] [:3 :!S3] [:4 :!S4] [:5 :!S5] [:6 :!S6] [:7 :!S7] [:8 :!S8] [:9 :!S9] [:0 :!S0]
-        ]}
-
-       ]
+{
+:profiles {
+    :Default {:default true
+              :sim 40}
 }
+:froms {
+   :fd {:sim [:f :d] }
+   :jk {:sim [:j :k] }
+   :er {:sim [:e :r] }
+   :ui {:sim [:u :i] }
+   :ef {:sim [:e :f] }
+   :ij {:sim [:i :j] }
+   :sd {:sim [:s :d] }
+   :kl {:sim [:k :l] }
+   :io {:sim [:i :o] }
+   :we {:sim [:w :e] }
+}
+
+
+:main [{:des "jk-layer"
+        :rules [[:jk ["jk-layer" 1] nil {:afterup ["jk-layer" 0]}]
+                [:fd  ["fd-layer" 1] nil {:afterup ["fd-layer" 0]}]
+                    
+                [:j :down_arrow :fd-layer] ;; f-j down arrow 
+                [:k :up_arrow :fd-layer] ;; f-k up arrow
+                [:l :right_arrow :fd-layer] ;; f-l right arrow
+                [:h :left_arrow :fd-layer] ;; f-h left arrow
+
+                [:u :!CSopen_bracket :fd-layer] ;; cmd shift [ 
+                [:i :!CSclose_bracket :fd-layer] ;; cmd shift ]
+                [:m :!Cw :fd-layer] ;; cmd w
+
+                [:d :!!s :jk-layer] ;; app switcher prev 
+                [:f :!!d :jk-layer] ;; app switcher next
+                [:e :!Cgrave_accent_and_tilde :jk-layer] ;; app switcher next window
+
+                [:w :!Ow :jk-layer] ;; magnet next screen
+                [:q :!Oq :jk-layer] ;; magnet prev screen
+                [:z :!Oz :jk-layer] ;; magnet left half
+                [:x :!Ox :jk-layer] ;; magnet right two thirds
+                [:c :!Oc :jk-layer] ;; magnet right half
+
+                [:s :!!t :jk-layer] ;; s = spotlight
+                [:a :!!v :jk-layer]]} ;; a = vimac
+               
+
+        {:des "modifiers" 
+        :rules [[:sd :left_shift]
+                [:kl :right_shift]
+                [:ef :left_control]
+                [:ij :right_control]
+                [:io :left_command]
+                [:we :right_command]]}
+     
+        {:des "mouse buttons"
+        :rules [[:f6 ["mouse-layer" 1]]
+                [:f5 ["mouse-layer" 0]]
+                [:5 :button2 :mouse-layer]
+                [:6 :button1 :mouse-layer]
+                [:4 :page_down :mouse-layer]
+                [:3 :page_up :mouse-layer]]}
+]}
